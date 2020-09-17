@@ -25,11 +25,14 @@ node{
     		bat "docker login --username $user --password $pass"
 	}
 
-     def version= bat ( returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
+pom = readMavenPom file: 'pom.xml'
 
-    bat "echo ${version}"
 
-	bat "docker push shadyragab/jenkinspoc:${version}"
+      version= bat ( returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
+
+    bat "echo ${pom.version}"
+
+	bat "docker push shadyragab/jenkinspoc:${pom.version}"
   }
 
 
