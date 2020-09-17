@@ -49,7 +49,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>shadyragab/jenkinspoc/${project.version}</name>
+						<name>shadyragab/jenkinspoc:${project.version}</name>
 					</image>
 
 				</configuration>
