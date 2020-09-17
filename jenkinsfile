@@ -7,11 +7,17 @@ node{
 	url: 'https://github.com/shady-ragab1/jenkinspoc'
   }
 
-  stage('package'){
+  stage('build jar'){
 
       //sh "${mvn} clean package"
 	bat "mvn clean package"
   }
+
+  stage('build image'){
+
+        //sh "${mvn} clean package"
+  	bat "mvn spring-boot:build-image"
+    }
 
 
 
