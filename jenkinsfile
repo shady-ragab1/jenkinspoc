@@ -4,7 +4,7 @@ node{
   stage('checkout'){
     git branch: 'master',
 	credentialsId: 'githubCredentials',
-	url: 'https://github.com/shady-ragab/jenlins_poc'
+	url: 'https://github.com/shady-ragab1/jenkinspoc'
   }
 
   stage('package'){
