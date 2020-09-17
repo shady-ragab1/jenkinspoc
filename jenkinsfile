@@ -25,7 +25,7 @@ node{
     		bat "docker login --username $user --password $pass"
 	}
 
-      def version= bat ("mvn help:evaluate -Dexpression=project.version -q -DforceStdout ",returnStdout: true)
+      version= bat ( returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
 
 	bat "docker push shadyragab/jenkinspoc:${version}"
   }
