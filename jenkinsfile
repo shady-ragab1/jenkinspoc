@@ -1,6 +1,6 @@
 node{
 
-
+//def mvn = tool (name: 'maven', type: 'maven') + '/bin/mvnVERSIONdd
   stage('checkout'){
     git branch: 'master',
 	credentialsId: 'githubCredentials',
@@ -18,6 +18,17 @@ node{
         //sh "${mvn} clean package"
   	bat "mvn spring-boot:build-image"
     }
+
+ stage('push to dockerhub'){
+
+  	withCredentials([usernamePassword(credentialsId: 'dockerhubCredentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
+    		bat "docker login --username $user --password $pass"
+	}
+
+      def version= bat "mvn help:evaluate -Dexpression=project.version -q -DforceStdout ,returnStdout: true"
+
+	bat "docker push shadyragab/jenkinspoc:${version}"
+  }
 
 
 
