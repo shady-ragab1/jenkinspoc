@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jebkinspoc
+  name: jebkinspoc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jebkinspoc
+  template:
+    metadata:
+      labels:
+        app: jebkinspoc
+    spec:
+      container:
+          image: TO_BE_REPLACED
+          name: jebkinspoc

@@ -1,6 +1,9 @@
 node{
 
 //def mvn = tool (name: 'maven', type: 'maven') + '/bin/mvnVERSIONdd
+pom = readMavenPom file: 'pom.xml'
+def version = pom.version
+
   stage('checkout'){
     git branch: 'master',
 	credentialsId: 'githubCredentials',
@@ -25,15 +28,29 @@ node{
     		bat "docker login --username $user --password $pass"
 	}
 
-pom = readMavenPom file: 'pom.xml'
+    //pom = readMavenPom file: 'pom.xml'
 
 
-      version= bat ( returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
+    //version= bat ( returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
 
     bat "echo ${pom.version}"
 
-	bat "docker push shadyragab/jenkinspoc:${pom.version}"
+	bat "docker push shadyragab/jenkinspoc:${version}"
   }
+
+   stage('run to minikube'){
+
+
+      deployment = readYaml file: 'deployment_template.yml'
+
+      deployment = ['spec.template.spec.container.image':'shadyragab/jenkinspoc:${version}']
+      writeYaml file:"deployment.yaml", data: deployment
+
+       bat "kubectl apply -f deployment.yaml"
+       bat "kubectl apply -f service.yaml"
+
+
+    }
 
 
 
