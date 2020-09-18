@@ -15,6 +15,6 @@ spec:
         app: jebkinspoc
     spec:
       containers:
-          name: jebkinspoc
-          image: TO_BE_REPLACED
+      -   name: jebkinspoc
+          image: shadyragab/jenkinspoc:0.0.1-SNAPSHOT
           
