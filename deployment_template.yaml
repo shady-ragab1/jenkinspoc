@@ -14,6 +14,7 @@ spec:
       labels:
         app: jebkinspoc
     spec:
-      container:
-          image: TO_BE_REPLACED
+      containers:
           name: jebkinspoc
+          image: TO_BE_REPLACED
+          
