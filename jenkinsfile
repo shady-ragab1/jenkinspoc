@@ -47,7 +47,7 @@ def version = pom.version
 
       deployment = readYaml file: 'deployment_template.yaml'
 
-      deployment.spec.template.spec.containers.image = "shadyragab/jenkinspoc:${version}"
+      deployment.spec.template.spec.containers[0].image = "shadyragab/jenkinspoc:${version}"
       writeYaml file:"deployment.yaml", data: deployment
 
        bat "kubectl apply -f deployment.yaml"
