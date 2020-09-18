@@ -5,7 +5,7 @@ pom = readMavenPom file: 'pom.xml'
 def version = pom.version
 
   stage('clean up'){
-   	cleanWs
+   	cleanWs()
   }
 
   stage('checkout'){
