@@ -55,7 +55,7 @@ def version = pom.version
     //bat "kubectl config set-context minikube --cluster=minikube --user=minikube"
     //bat "kubectl config use-context minikube" 
     
-   bat "$Env:KUBECONFIG='$Env:KUBECONFIG;C:\Users\shady1\.kube\config'"
+   bat "$Env:KUBECONFIG='$Env:KUBECONFIG;C:/Users/shady1/.kube/config'"
 
        bat "kubectl apply -f deployment.yaml"
        bat "kubectl apply -f service.yaml"
