@@ -50,7 +50,7 @@ def version = pom.version
       deployment.spec.template.spec.containers[0].image = "shadyragab/jenkinspoc:${version}"
       writeYaml file:"deployment.yaml", data: deployment
       
-      bat "kubectl config use-context minikube"
+     // bat "kubectl config use-context minikube"
 
        bat "kubectl apply -f deployment.yaml"
        bat "kubectl apply -f service.yaml"
