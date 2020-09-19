@@ -51,9 +51,8 @@ def version = pom.version
       writeYaml file:"deployment.yaml", data: deployment
       
     
-    //bat "kubectl config set-cluster minikube --server=https://127.0.0.1:32768 --insecure-skip-tls-verify=true"
-    //bat "kubectl config set-context minikube --cluster=minikube --user=minikube"
-    //bat "kubectl config use-context minikube" 
+   
+    //adding environment variable KUBECONFIG=C:\Users\shady1.kube\config solved the issue of empty kubectl context
     
  
 
