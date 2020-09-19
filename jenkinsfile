@@ -51,6 +51,7 @@ def version = pom.version
       writeYaml file:"deployment.yaml", data: deployment
       
      // bat "kubectl config use-context minikube"
+     bat "kubectl config view"
 
        bat "kubectl apply -f deployment.yaml"
        bat "kubectl apply -f service.yaml"
